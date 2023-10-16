@@ -1,3 +1,7 @@
+<img width="948" alt="image" src="https://github.com/darshan15062002/Note-Next-app/assets/101007397/94da9e13-2462-4d0f-bebd-83252ce41b3c">
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
