@@ -37,9 +37,14 @@ function Navbar() {
             </SignInButton>
           </>
         )}
-        {!isAuthenticated && !isLoading && (
+        {isAuthenticated && !isLoading && (
           <>
-            <Button variant={"ghost"} size={"sm"} asChild>
+            <Button
+              className="bg-[#F15825]"
+              variant={"ghost"}
+              size={"sm"}
+              asChild
+            >
               <Link href="/documents">Enter Note</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
