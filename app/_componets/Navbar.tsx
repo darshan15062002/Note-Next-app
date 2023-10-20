@@ -5,9 +5,11 @@ import React from "react";
 import { useConvexAuth } from "convex/react";
 import { Logo } from "./Logo";
 import { ModeToggle } from "@/components/mode-toggle";
-import { SignIn, SignInButton } from "@clerk/clerk-react";
+import { SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Ghost } from "lucide-react";
+import { Spinner } from "./spinner";
+import Link from "next/link";
 
 function Navbar() {
   const scrolled = useScrollTop();
@@ -22,7 +24,7 @@ function Navbar() {
     >
       <Logo />
       <div className="md:ml-auto md:justify-end justify-between w-full flex items-center gap-x-2">
-        {isLoading && <p>Loading....</p>}
+        {isLoading && <Spinner />}
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
@@ -30,8 +32,20 @@ function Navbar() {
                 Log in
               </Button>
             </SignInButton>
+            <SignInButton mode="modal">
+              <Button size="sm">Get Note free</Button>
+            </SignInButton>
           </>
         )}
+        {!isAuthenticated && !isLoading && (
+          <>
+            <Button variant={"ghost"} size={"sm"} asChild>
+              <Link href="/documents">Enter Note</Link>
+            </Button>
+            <UserButton afterSignOutUrl="/" />
+          </>
+        )}
+
         <ModeToggle />
       </div>
     </div>
