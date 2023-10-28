@@ -35,9 +35,10 @@ function Heading() {
         </div>
       )}
       {!isAuthenticated && !isLoading && (
-        <SignInButton mode="modal">
-          <Button>Get Note free</Button>
-          <ArrowRight className="h-4 w-4 ml-2" />
+        <SignInButton className="bg-[#F15825]" mode="modal">
+          <Button>
+            Get Note free <ArrowRight className="h-4 w-4 ml-2" />
+          </Button>
         </SignInButton>
       )}
     </div>
