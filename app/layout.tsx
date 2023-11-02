@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/providers/them-provider";
 import "./globals.css";
 import type { Metadata } from "next";
-
+import { Toaster } from "sonner";
 import { Inter } from "next/font/google";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 
@@ -42,6 +42,7 @@ export default function RootLayout({
             disableTransitionOnChange
             storageKey="note-theme"
           >
+            <Toaster position="bottom-center" />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
