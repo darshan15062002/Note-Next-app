@@ -16,7 +16,7 @@ import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Item from "./Item";
 import { toast } from "sonner";
-import DocumentList from "./DocumentList";
+import { DocumentList } from "./DocumentList";
 
 const Navigation = () => {
   const pathName = usePathname();
@@ -42,6 +42,7 @@ const Navigation = () => {
       collapse();
     }
   }, [pathName, isMobile]);
+
   const handleMouseDown = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {
