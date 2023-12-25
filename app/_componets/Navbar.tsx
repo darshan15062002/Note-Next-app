@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { useConvexAuth } from "convex/react";
 import { Logo } from "./Logo";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 import { SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
 import { Button } from "@/components/ui/button";
 import { Ghost } from "lucide-react";

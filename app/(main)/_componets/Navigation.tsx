@@ -24,18 +24,20 @@ import Item from "./Item";
 import { toast } from "sonner";
 import { DocumentList } from "./DocumentList";
 import TrashBox from "./TrashBox";
+import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-setting";
 
 const Navigation = () => {
   const pathName = usePathname();
   const isResizingRef = useRef(false);
   const isMobile = useMediaQuery("(max-width:768px)");
-
+  const search = useSearch();
   const create = useMutation(api.documents.create);
   const sidebarRef = useRef<ElementRef<"aside">>(null);
   const navbarRef = useRef<ElementRef<"div">>(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isCollapsed, setIsCollaped] = useState(isMobile);
-
+  const settings = useSettings();
   useEffect(() => {
     if (isMobile) {
       collapse();
@@ -143,8 +145,13 @@ const Navigation = () => {
         </div>
         <div>
           <UserItem />
-          <Item icon={Search} label="Search" isSearch onClick={() => {}} />
-          <Item icon={Settings} label="Setting" isSearch onClick={() => {}} />
+          <Item icon={Search} label="Search" isSearch onClick={search.onOpen} />
+          <Item
+            icon={Settings}
+            label="Setting"
+            isSearch
+            onClick={settings.onOpen}
+          />
           <Item icon={PlusCircle} label="New Page" onClick={handleCreate} />
         </div>
         <div className="mt-4">
