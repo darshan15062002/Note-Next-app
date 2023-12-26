@@ -14,7 +14,7 @@ import {
   PopoverTrigger,
   PopoverContent,
 } from "@radix-ui/react-popover";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./UserItem";
@@ -26,8 +26,10 @@ import { DocumentList } from "./DocumentList";
 import TrashBox from "./TrashBox";
 import { useSearch } from "@/hooks/use-search";
 import { useSettings } from "@/hooks/use-setting";
+import { Navbar } from "./Navbar";
 
 const Navigation = () => {
+  const params = useParams();
   const pathName = usePathname();
   const isResizingRef = useRef(false);
   const isMobile = useMediaQuery("(max-width:768px)");
@@ -180,16 +182,20 @@ const Navigation = () => {
           isMobile && "left-0 w-full"
         )}
       >
-        <nav className="bg-transparent px-3 py-2 w-full">
-          {isCollapsed && (
-            <MenuIcon
-              role="button"
-              onClick={resetWidth}
-              className="h-6
+        {!!params.documentId ? (
+          <Navbar isCollapsed={isCollapsed} onResetWidth={resetWidth} />
+        ) : (
+          <nav className="bg-transparent px-3 py-2 w-full">
+            {isCollapsed && (
+              <MenuIcon
+                role="button"
+                onClick={resetWidth}
+                className="h-6
           w-6 text-muted-foreground"
-            />
-          )}
-        </nav>
+              />
+            )}
+          </nav>
+        )}
       </div>
     </>
   );
