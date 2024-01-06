@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 import { Inter } from "next/font/google";
 import { ConvexClientProvider } from "@/components/providers/convex-provider";
 import { ModalProvider } from "@/components/providers/modal-provide";
-import { EdgeStoreProvider } from "@/lib/edgestore";
+import { EdgeStoreProvider } from "../lib/edgestore";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -25,19 +25,26 @@ export const CoverImageModal = () => {
   };
 
   const onChange = async (file?: File) => {
-    if (file) {
-      setIsSubmitting(true);
-      setFile(file);
-      const res = await edgestore.publicFiles.upload({
-        file,
-      });
+    try {
+      if (file) {
+        setIsSubmitting(true);
+        setFile(file);
 
-      await update({
-        id: params.documentId as Id<"documents">,
-        coverImage: res.url,
-      });
+        const res = await edgestore.publicFiles.upload({
+          file,
+          options: {
+            replaceTargetUrl: coverImage.url,
+          },
+        });
+        await update({
+          id: params.documentId as Id<"documents">,
+          coverImage: res.url,
+        });
 
-      onClose();
+        onClose();
+      }
+    } catch (error) {
+      console.log(error, "error uploading");
     }
   };
 
